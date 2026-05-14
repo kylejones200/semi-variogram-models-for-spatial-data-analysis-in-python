@@ -1,7 +1,7 @@
 # Semi Variogram Models for Spatial Data Analysis in Python
 
-**Published:** 2025-08-10
-**Medium:** [https://medium.com/@kyle-t-jones/semi-variogram-models-for-spatial-data-analysis-in-python-a44b3eb6e092](https://medium.com/@kyle-t-jones/semi-variogram-models-for-spatial-data-analysis-in-python-a44b3eb6e092)
+Published: 2025-08-10
+Medium: [https://medium.com/@kyle-t-jones/semi-variogram-models-for-spatial-data-analysis-in-python-a44b3eb6e092](https://medium.com/@kyle-t-jones/semi-variogram-models-for-spatial-data-analysis-in-python-a44b3eb6e092)
 
 ## About
 

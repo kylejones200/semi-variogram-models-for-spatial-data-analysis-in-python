@@ -15,16 +15,16 @@ Semi-variograms help us analyze how similar observations are based on how close 
 Choosing the right semi-variogram model matters because it influences interpolation methods such as kriging, determines how far spatial influence extends, and shapes the uncertainty estimates.
 
 ### De Wijsian Model
-**Equation:** γ(h) = A ln(h) + B
+Equation: γ(h) = A ln(h) + B
 
-**Behavior:** This model is *mildly non-stationary*. The semi-variance increases without bound as distance grows, but the growth slows logarithmically. This can fit processes where spatial dependence persists over long ranges but weakens slowly --- such as pollution levels downwind of an industrial site or the spread of cultural influence over a large region.
+Behavior: This model is *mildly non-stationary*. The semi-variance increases without bound as distance grows, but the growth slows logarithmically. This can fit processes where spatial dependence persists over long ranges but weakens slowly --- such as pollution levels downwind of an industrial site or the spread of cultural influence over a large region.
 
 A nonzero B indicates a nugget effect, representing measurement error or micro-scale variation that occurs even between points very close together.
 
 This is useful when there is long-range dependence without a clear upper bound or when variability accumulates slowly over distance.
 
 
-**De Wijsian Model in Mineral Exploration**
+De Wijsian Model in Mineral Exploration
 
 Phenomenon: Trace mineral concentration in a river basin downstream of a mine.
 
@@ -33,16 +33,16 @@ Why this model: Contaminant transport in rivers often has *long-range dependence
 Implication: Using a bounded model here would underestimate downstream contamination risk.
 
 ### Linear Model
-**Equation:** γ(h) = A h + B
+Equation: γ(h) = A h + B
 
-**Behavior:** A *strongly non-stationary* model. The semi-variance increases linearly with distance, with no plateau. It is simple and can describe trends where dissimilarity grows steadily across space --- like soil property changes across a large climatic gradient.
+Behavior: A *strongly non-stationary* model. The semi-variance increases linearly with distance, with no plateau. It is simple and can describe trends where dissimilarity grows steadily across space --- like soil property changes across a large climatic gradient.
 
 A nonzero B again signals a nugget effect.
 
 This is useful when there is strong spatial drift or gradient or when you cannot assume a maximum range of spatial influence.
 
 
-**Linear Model in Urban Housing Prices**
+Linear Model in Urban Housing Prices
 
 Phenomenon: Housing prices across a metropolitan area with a steady distance-from-center gradient.
 
@@ -51,14 +51,14 @@ Why this model: When there's a consistent trend --- like prices falling by a
 Implication: A stationary model would smooth away the gradient, overestimating prices on the outskirts and underestimating them downtown.
 
 ### Log--Log Model
-**Equation:** γ(h) = B + h\^A
+Equation: γ(h) = B + h\^A
 
-**Behavior:** Also *strongly non-stationary*. The growth rate of γ(h) depends on the exponent A. If A \< 1, the curve rises quickly at first and then slows; if A \> 1, the increase accelerates. Useful for processes with power-law scaling, such as settlement sizes or vegetation patchiness in semi-arid landscapes.
+Behavior: Also *strongly non-stationary*. The growth rate of γ(h) depends on the exponent A. If A \< 1, the curve rises quickly at first and then slows; if A \> 1, the increase accelerates. Useful for processes with power-law scaling, such as settlement sizes or vegetation patchiness in semi-arid landscapes.
 
 This is useful when there is power-law behavior in spatial variance or when the systems show clustering at multiple scales.
 
 
-**Log--Log Model in Vegetation Patchiness**
+Log--Log Model in Vegetation Patchiness
 
 Phenomenon: Vegetation cover in semi-arid rangelands.
 
@@ -67,16 +67,16 @@ Why this model: Patch sizes follow a power-law distribution, with small clusters
 Implication: Correctly modeling the scaling improves predictions for areas with sparse field measurements, guiding sustainable grazing plans.
 
 ### Exponential Model
-**Equation:** γ(h) = C₀ + C \[1 --- exp(--\|h\| / a)\]
+Equation: γ(h) = C₀ + C \[1 --- exp(--\|h\| / a)\]
 
-**Behavior:** A *stationary* model with an asymptotic approach to a sill (C₀ + C). The parameter a controls how quickly the curve reaches the sill, which represents the point beyond which additional distance adds little to dissimilarity.
+Behavior: A *stationary* model with an asymptotic approach to a sill (C₀ + C). The parameter a controls how quickly the curve reaches the sill, which represents the point beyond which additional distance adds little to dissimilarity.
 
 This model is common in environmental sciences, describing processes such as temperature variation, rainfall patterns, or soil nutrient levels where correlation declines exponentially with distance.
 
 This is useful when the spatial influence decays quickly but not instantly or when the data suggests a well-defined maximum variance at a finite distance.
 
 
-**Exponential Model in Air Pollution Monitoring**
+Exponential Model in Air Pollution Monitoring
 
 Phenomenon: Nitrogen dioxide (NO₂) concentrations in a city.
 
@@ -85,14 +85,14 @@ Why this model: Pollution from traffic sources tends to decay exponentially with
 Implication: Accurately identifying the short range of correlation avoids oversampling in low-value areas and directs resources to denser monitoring near pollution sources.
 
 ### Hole Effect Model
-**Equation:** γ(h) = C \[1 --- sin(ah) / (ah)\]
+Equation: γ(h) = C \[1 --- sin(ah) / (ah)\]
 
-**Behavior:** This model produces oscillations as h increases, suggesting spatial periodicity --- dissimilarity rises, then falls, then rises again. It can represent patterns like dune spacing, wave-driven sediment deposits, or periodic urban layouts.
+Behavior: This model produces oscillations as h increases, suggesting spatial periodicity --- dissimilarity rises, then falls, then rises again. It can represent patterns like dune spacing, wave-driven sediment deposits, or periodic urban layouts.
 
 This is useful when there are detectable spatial cycles or repeating patterns or when there is an oscillating correlation structure.
 
 
-**Hole Effect Model in Agricultural Field Patterns**
+Hole Effect Model in Agricultural Field Patterns
 
 Phenomenon: Soil moisture across an irrigated farm with alternating wet and dry rows.
 
@@ -101,18 +101,18 @@ Why this model: The hole effect's oscillations fit periodic variation --- pe
 Implication: Recognizing the periodicity prevents kriging from smoothing away the irrigation structure, allowing better alignment of planting schedules with moisture availability.
 
 ### Spherical Model
-**Equation:**
+Equation:
 
 γ(h) = 0 h = 0\ γ(h) = C \[3h / (2a) --- (h³ / (2a³))\] + C₀ h ≤ a\ γ(h) = C + C₀ h \> a
 
-**Behavior:** Another *stationary* model, very popular in practice. It rises smoothly and reaches the sill exactly at range a. Beyond a, dissimilarity stops increasing --- points are uncorrelated.
+Behavior: Another *stationary* model, very popular in practice. It rises smoothly and reaches the sill exactly at range a. Beyond a, dissimilarity stops increasing --- points are uncorrelated.
 
 This is the workhorse model for kriging in many environmental and social science applications. It handles phenomena like heavy metal concentration in soils, school test score patterns in metropolitan areas, or vegetation cover in agricultural landscapes.
 
 This is useful when there is smooth correlation decay up to a well-defined range or when there is no strong reason to choose another model.
 
 
-**Spherical Model in Soil Nutrient Mapping**
+Spherical Model in Soil Nutrient Mapping
 
 Phenomenon: Phosphorus concentration in cropland soils.
 
@@ -121,14 +121,14 @@ Why this model: Soil nutrients often show a well-defined correlation range ---
 Implication: Sampling strategies can be optimized so that no two samples within the range are redundant, saving time and cost.
 
 ### Gaussian Model
-**Equation:** γ(h) = C₀ + C \[1 --- exp(--3h² / a²)\]
+Equation: γ(h) = C₀ + C \[1 --- exp(--3h² / a²)\]
 
-**Behavior:** Stationary, with a very smooth rise from the origin. The Gaussian model implies high continuity at short distances --- ideal for processes with gentle spatial variation such as groundwater levels or temperature in homogeneous terrain.
+Behavior: Stationary, with a very smooth rise from the origin. The Gaussian model implies high continuity at short distances --- ideal for processes with gentle spatial variation such as groundwater levels or temperature in homogeneous terrain.
 
 This is useful when you have highly continuous spatial fields or the short-distance correlation is especially strong.
 
 
-**Gaussian Model in Groundwater Level Monitoring**
+Gaussian Model in Groundwater Level Monitoring
 
 Phenomenon: Groundwater depth in a homogeneous aquifer.
 
