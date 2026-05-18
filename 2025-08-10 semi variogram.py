@@ -74,7 +74,6 @@ def minimalist_style() -> None:
             "axes.grid": False,
         }
     )
-
     if __name__ == "__main__":
         h_ns = np.linspace(0.001, 30, 600)
         plot_model(
@@ -129,7 +128,6 @@ def minimalist_style_2() -> None:
             "axes.grid": False,
         }
     )
-
     if __name__ == "__main__":
         a = 10.0
         h = np.linspace(0, 3 * a, 800)
