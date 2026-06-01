@@ -11,14 +11,7 @@ Semi-variograms help us analyze how similar observations are based on how close 
 
 Choosing the right semi-variogram model matters because it influences interpolation methods such as kriging, determines how far spatial influence extends, and shapes the uncertainty estimates.
 
-## About
 
-Place the code for this article in this repository.
-The original article export is saved as `article.md`.
-
-## Files
-
-Add your `.ipynb`, `.py`, `.yaml`, `.js`, `.ts`, or other project files here.
 
 ## Disclaimer
 
